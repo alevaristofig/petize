@@ -9,7 +9,7 @@ public class ProdutoNaoEncontradoException extends EntidadeNaoEncontradaExceptio
 	}
 
 	public ProdutoNaoEncontradoException(Long id) {
-		this(String.format("Não existe um cadastro de estado com código %d", id));
+		this(String.format("Não existe um cadastro de produto com código %d", id));
 	}
 
 }

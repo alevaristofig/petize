@@ -1,0 +1,5 @@
+package com.api.loja.assembler;
+
+public class PedidoInputDisassembler {
+
+}

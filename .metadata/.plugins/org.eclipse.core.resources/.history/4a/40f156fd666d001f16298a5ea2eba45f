@@ -1,0 +1,21 @@
+package com.api.loja.domain.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.api.loja.domain.model.Pedido;
+import com.api.loja.domain.repositoy.PedidoRepository;
+
+import jakarta.transaction.Transactional;
+
+@Service
+public class PedidoService {
+
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	@Transactional
+	public Pedido salvar(Pedido pedido) {
+		return pedidoRepository.save(pedido);
+	}
+}

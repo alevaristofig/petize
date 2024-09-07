@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.api.loja.domain.enums.Status;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -38,6 +39,6 @@ public class Pedido {
 	@Column(nullable = false)
 	private OffsetDateTime dataPedido;
 	
-	@OneToMany(mappedBy = "pedido")
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
 	private List<ItemPedido> itens = new ArrayList<>();
 }

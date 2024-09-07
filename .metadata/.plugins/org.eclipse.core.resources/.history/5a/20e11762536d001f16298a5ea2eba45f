@@ -1,0 +1,5 @@
+package com.api.loja.domain.repositoy;
+
+public class PedidoRepository {
+
+}

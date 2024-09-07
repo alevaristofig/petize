@@ -1,0 +1,14 @@
+spring.application.name=loja
+
+#database
+spring.datasource.url=jdbc:mariadb://localhost:3306/petize?createDatabaseIfNotExist=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=rootpesquisa
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=create
+
+logging.level.root=INFO
+logging.level.org.springframework.web=DEBUG
+logging.level.org.hibernate=error

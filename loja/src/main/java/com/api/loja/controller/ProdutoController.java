@@ -71,7 +71,7 @@ public class ProdutoController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void apagar(@PathVariable Long id) {
+	public void excluir(@PathVariable Long id) {
 		produtoService.excluir(id);
 	}
 }

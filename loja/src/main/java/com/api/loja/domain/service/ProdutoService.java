@@ -3,11 +3,9 @@ package com.api.loja.domain.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.api.loja.domain.exception.EntidadeEmUsoException;
 import com.api.loja.domain.exception.ProdutoNaoEncontradoException;
 import com.api.loja.domain.model.Produto;
 import com.api.loja.domain.repositoy.ProdutoRepository;
@@ -44,8 +42,6 @@ public class ProdutoService {
 			produtoRepository.flush();
 		} catch (EmptyResultDataAccessException e) {
 			throw new ProdutoNaoEncontradoException(id);
-		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoException(String.format(MSG_PRODUTO_EM_USO, id));
-		}
+		} 
 	}
 }

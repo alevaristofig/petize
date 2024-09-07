@@ -1,0 +1,23 @@
+package com.api.loja.assembler;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.api.loja.domain.model.Pedido;
+import com.api.loja.domain.model.Produto;
+import com.api.loja.model.input.PedidoInput;
+import com.api.loja.model.input.ProdutoInput;
+
+public class PedidoInputDisassembler {
+
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public Pedido toDomainObject(PedidoInput pedidoInput) {
+		return modelMapper.map(pedidoInput, Pedido.class);
+	}
+	
+	public void copyToDomainObject(PedidoInput pedidoInput, Pedido pedido) {
+		modelMapper.map(pedidoInput, pedido);
+	}
+}
