@@ -1,0 +1,5 @@
+package com.api.loja.domain.exception;
+
+public class NegocioException {
+
+}

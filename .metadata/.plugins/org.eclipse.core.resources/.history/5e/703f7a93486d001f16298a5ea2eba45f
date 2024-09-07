@@ -1,0 +1,17 @@
+package com.api.loja.assembler;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.api.loja.domain.model.Produto;
+import com.api.loja.model.ProdutoModel;
+
+public class ProdutoModelAssembler {
+
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public ProdutoModel toModel(Produto produto) {
+		return modelMapper.map(produto, ProdutoModel.class);
+	}
+}

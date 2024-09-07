@@ -1,0 +1,5 @@
+package com.api.loja.domain.model;
+
+public class ItemPedido {
+
+}
