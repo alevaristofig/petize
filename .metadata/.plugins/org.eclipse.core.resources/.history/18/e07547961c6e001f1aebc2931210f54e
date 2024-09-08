@@ -1,0 +1,26 @@
+package com.api.loja.model;
+
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.api.loja.domain.enums.Status;
+import com.api.loja.domain.model.ItemPedido;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class PedidoModel {
+
+	private Long id;
+	
+	private int quantidade;
+
+	private Status status = Status.CRIADO;
+	
+	private OffsetDateTime dataPedido;
+	
+	private List<ItemPedido> itens = new ArrayList<>();
+}

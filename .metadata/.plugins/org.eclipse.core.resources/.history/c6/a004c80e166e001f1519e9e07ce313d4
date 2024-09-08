@@ -1,0 +1,8 @@
+package com.api.loja.facade;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class PedidoFacade {
+
+}

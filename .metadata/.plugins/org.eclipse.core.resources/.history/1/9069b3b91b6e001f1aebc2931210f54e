@@ -1,0 +1,13 @@
+package com.api.loja.model.input;
+
+import com.api.loja.domain.enums.Status;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class PedidoStatusInput {
+
+	private Status status;
+}

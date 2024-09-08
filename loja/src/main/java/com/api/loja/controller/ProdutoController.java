@@ -18,6 +18,7 @@ import com.api.loja.assembler.ProdutoInputDisassembler;
 import com.api.loja.assembler.ProdutoModelAssembler;
 import com.api.loja.domain.model.Produto;
 import com.api.loja.domain.service.ProdutoService;
+import com.api.loja.model.PedidoModel;
 import com.api.loja.model.ProdutoModel;
 import com.api.loja.model.input.ProdutoInput;
 

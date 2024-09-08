@@ -1,0 +1,11 @@
+package com.api.loja.producer;
+
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class PedidoRequestProducer {
+	
+	@Autowired
+	private AmqpTemplate amqpTemplate;
+
+}

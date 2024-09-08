@@ -1,5 +1,6 @@
 package com.api.loja.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.loja.assembler.PedidoInputDisassembler;
 import com.api.loja.assembler.PedidoModelAssembler;
+import com.api.loja.consumer.PedidoResponseConsumidor;
 import com.api.loja.domain.model.Pedido;
 import com.api.loja.domain.service.PedidoService;
+import com.api.loja.facade.PedidoFacade;
 import com.api.loja.model.PedidoModel;
 import com.api.loja.model.input.PedidoInput;
 
@@ -33,6 +36,12 @@ public class PedidoController {
 	
 	@Autowired
 	private PedidoModelAssembler pedidoModelAssembler;
+	
+	@Autowired
+	private PedidoFacade pedidoFacade;
+	
+	@Autowired
+	private PedidoResponseConsumidor pedidoResponseConsumidor;
 	
 	@GetMapping
 	public List<PedidoModel> listar(){
@@ -61,17 +70,31 @@ public class PedidoController {
 	
 	@PutMapping("/{id}")
 	public PedidoModel atualizar(@PathVariable Long id, @RequestBody PedidoInput pedidoInput) {
-		Pedido pedido = pedidoService.buscarOuFalhar(id);
+		Pedido pedido = pedidoService.buscarOuFalhar(id);		
 		
 		pedidoInputDisassembler.copyToDomainObject(pedidoInput, pedido);
 		
 		pedido = pedidoService.salvar(pedido);
 		
-		return pedidoModelAssembler.toModel(pedido);
+		return pedidoModelAssembler.toModel(pedido);		
 	}
 	
 	@DeleteMapping("/{id}")
 	public void excluir(@PathVariable Long id) {
 		pedidoService.excluir(id);
+	}
+	
+	@PutMapping("/alterarstatus/{id}")
+	public PedidoModel alterarStatus(@PathVariable Long id, @RequestBody PedidoInput pedidoInput) {
+		
+		Pedido pedido = pedidoService.buscarOuFalhar(id);		
+		
+		pedidoInputDisassembler.copyToDomainObject(pedidoInput, pedido);
+		
+		pedidoFacade.enviarMensagem(pedidoInput);
+		
+		pedidoService.salvar(pedido);
+		
+		return pedidoModelAssembler.toModel(pedido);
 	}
 }

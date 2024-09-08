@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.api.loja.domain.enums.Status;
 import com.api.loja.domain.model.ItemPedido;
+import com.api.loja.domain.model.Produto;
+import com.api.loja.model.input.ItemPedidoInput;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +20,9 @@ public class PedidoModel {
 	
 	private int quantidade;
 
-	private Status status = Status.CRIADO;
+	private Status status;
 	
 	private OffsetDateTime dataPedido;
 	
-	private List<ItemPedido> itens = new ArrayList<>();
+	private List<ItemPedidoInput> itens;
 }

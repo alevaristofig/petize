@@ -1,0 +1,26 @@
+package com.api.loja.producer;
+
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.api.loja.model.input.PedidoInput;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class PedidoRequestProducer {
+	
+	@Autowired
+	private AmqpTemplate amqpTemplate;
+	
+	private final ObjectMapper objectMapper = new ObjectMapper();
+	
+	public void integrarStatus(PedidoInput pedido) throws JsonProcessingException, AmqpException {
+		amqpTemplate.convertAndSend(
+			"pedito-status-exchange",
+			"pedido-status-queue-rout-key",
+			objectMapper.writeValueAsString(pedido)
+		);
+	}
+
+}
